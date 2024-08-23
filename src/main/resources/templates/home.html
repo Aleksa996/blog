@@ -9,13 +9,22 @@
 <body>
     <h1>Spring boot blog application</h1>
     <hr/>
+    <ul>
+        <li><a th:href="@{/posts/new}">New post</a></li>
+    </ul>
     <div class="posts-container">
         <div class="post" th:each="post : ${posts}">
             <h2><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title</a></h2>
+            <h5 th:text="'Writen by ' + ${post.account.firstName}">Account first name</h5>
             <h5 th:text="'Published on' + ${post.createdAt}">Created At</h5>
             <p th:text="${post.body}">body text</p>
             <br/>
         </div>
+        <hr/>
+        <ul>
+            <li><a th:href="@{/register}">Register</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+        </ul>
     </div>
 </body>
 </html>
